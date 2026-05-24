@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WolfPhuc</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:url("1000046139.jpg") no-repeat center center fixed;
+    background-size:cover;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.78);
+}
+
+.login-box,
+.content{
+    position:relative;
+    z-index:2;
+    width:95%;
+    max-width:1100px;
+    background:rgba(10,10,10,0.88);
+    border:2px solid #ff5e00;
+    border-radius:25px;
+    padding:30px;
+    color:white;
+    box-shadow:0 0 35px #ff5e00;
+}
+
+.content{
+    display:none;
+    max-height:92vh;
+    overflow-y:auto;
+}
+
+.logo{
+    display:block;
+    margin:0 auto 20px;
+    width:170px;
+    border-radius:50%;
+    box-shadow:0 0 25px #ff7300;
+}
+
+h1{
+    text-align:center;
+    color:#ff7b00;
+    margin-bottom:20px;
+    text-shadow:0 0 15px #ff7b00;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:25px;
+    color:#ccc;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    margin-bottom:15px;
+    font-size:16px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#ff4d00,#ff9900);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 15px #ff7300;
+}
+
+.search-box{
+    margin-bottom:25px;
+}
+
+.search-box input{
+    background:#222;
+    color:white;
+}
+
+.brand-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+}
+
+.brand{
+    background:rgba(255,255,255,0.08);
+    padding:18px;
+    border-radius:18px;
+    border-left:5px solid #ff7300;
+    transition:0.3s;
+}
+
+.brand:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,0.12);
+}
+
+.brand h2{
+    color:#ff9900;
+    margin-bottom:10px;
+}
+
+.brand p{
+    margin:6px 0;
+}
+
+.best{
+    margin-top:25px;
+    padding:20px;
+    border-radius:18px;
+    background:linear-gradient(45deg,#ff4d00,#ff9900);
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    box-shadow:0 0 20px #ff7300;
+}
+
+.footer{
+    margin-top:25px;
+    text-align:center;
+    opacity:0.8;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff7300;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- LOGIN -->
+
+<div class="login-box" id="loginBox">
+
+<img src="1000046139.jpg" class="logo">
+
+<h1>🐺 WolfPhuc Security</h1>
+
+<p class="subtitle">
+Web độ nhạy Free Fire cho mọi hãng điện thoại
+</p>
+
+<input type="password" id="password" placeholder="Nhập mật khẩu...">
+
+<button onclick="login()">Đăng Nhập</button>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content" id="content">
+
+<img src="1000046139.jpg" class="logo">
+
+<h1>🔥 WolfPhuc - Độ Nhạy Free Fire 🔥</h1>
+
+<p class="subtitle">
+Tìm kiếm độ nhạy tốt nhất cho từng hãng điện thoại
+</p>
+
+<div class="search-box">
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Tìm hãng điện thoại..."
+onkeyup="searchBrand()"
+>
+</div>
+
+<div class="brand-grid" id="brandList">
+
+<!-- SAMSUNG -->
+<div class="brand">
+<h2>📱 Samsung</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 95</p>
+<p>🔭 2x Scope: 90</p>
+<p>🎯 4x Scope: 85</p>
+<p>💀 AWM Scope: 60</p>
+<p>👀 Free Look: 80</p>
+</div>
+
+<!-- REDMI -->
+<div class="brand">
+<h2>📱 Redmi</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 100</p>
+<p>🔭 2x Scope: 92</p>
+<p>🎯 4x Scope: 88</p>
+<p>💀 AWM Scope: 65</p>
+<p>👀 Free Look: 85</p>
+</div>
+
+<!-- XIAOMI -->
+<div class="brand">
+<h2>📱 Xiaomi</h2>
+<p>🎯 Tổng quát: 99</p>
+<p>🔴 Red Dot: 96</p>
+<p>🔭 2x Scope: 91</p>
+<p>🎯 4x Scope: 86</p>
+<p>💀 AWM Scope: 62</p>
+<p>👀 Free Look: 82</p>
+</div>
+
+<!-- IPHONE -->
+<div class="brand">
+<h2>📱 iPhone</h2>
+<p>🎯 Tổng quát: 98</p>
+<p>🔴 Red Dot: 95</p>
+<p>🔭 2x Scope: 90</p>
+<p>🎯 4x Scope: 87</p>
+<p>💀 AWM Scope: 55</p>
+<p>👀 Free Look: 80</p>
+</div>
+
+<!-- OPPO -->
+<div class="brand">
+<h2>📱 Oppo</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 97</p>
+<p>🔭 2x Scope: 90</p>
+<p>🎯 4x Scope: 85</p>
+<p>💀 AWM Scope: 60</p>
+<p>👀 Free Look: 82</p>
+</div>
+
+<!-- VIVO -->
+<div class="brand">
+<h2>📱 Vivo</h2>
+<p>🎯 Tổng quát: 99</p>
+<p>🔴 Red Dot: 96</p>
+<p>🔭 2x Scope: 89</p>
+<p>🎯 4x Scope: 83</p>
+<p>💀 AWM Scope: 58</p>
+<p>👀 Free Look: 80</p>
+</div>
+
+<!-- REALME -->
+<div class="brand">
+<h2>📱 Realme</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 98</p>
+<p>🔭 2x Scope: 91</p>
+<p>🎯 4x Scope: 84</p>
+<p>💀 AWM Scope: 61</p>
+<p>👀 Free Look: 83</p>
+</div>
+
+<!-- HUAWEI -->
+<div class="brand">
+<h2>📱 Huawei</h2>
+<p>🎯 Tổng quát: 98</p>
+<p>🔴 Red Dot: 95</p>
+<p>🔭 2x Scope: 88</p>
+<p>🎯 4x Scope: 82</p>
+<p>💀 AWM Scope: 57</p>
+<p>👀 Free Look: 79</p>
+</div>
+
+<!-- ASUS ROG -->
+<div class="brand">
+<h2>📱 Asus ROG</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 100</p>
+<p>🔭 2x Scope: 95</p>
+<p>🎯 4x Scope: 90</p>
+<p>💀 AWM Scope: 72</p>
+<p>👀 Free Look: 90</p>
+</div>
+
+<!-- POCO -->
+<div class="brand">
+<h2>📱 POCO</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 98</p>
+<p>🔭 2x Scope: 92</p>
+<p>🎯 4x Scope: 87</p>
+<p>💀 AWM Scope: 64</p>
+<p>👀 Free Look: 84</p>
+</div>
+
+<!-- BLACK SHARK -->
+<div class="brand">
+<h2>📱 Black Shark</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 100</p>
+<p>🔭 2x Scope: 95</p>
+<p>🎯 4x Scope: 90</p>
+<p>💀 AWM Scope: 72</p>
+<p>👀 Free Look: 92</p>
+</div>
+
+<!-- ONEPLUS -->
+<div class="brand">
+<h2>📱 OnePlus</h2>
+<p>🎯 Tổng quát: 100</p>
+<p>🔴 Red Dot: 99</p>
+<p>🔭 2x Scope: 93</p>
+<p>🎯 4x Scope: 89</p>
+<p>💀 AWM Scope: 66</p>
+<p>👀 Free Look: 86</p>
+</div>
+
+<!-- INFINIX -->
+<div class="brand">
+<h2>📱 Infinix</h2>
+<p>🎯 Tổng quát: 99</p>
+<p>🔴 Red Dot: 96</p>
+<p>🔭 2x Scope: 89</p>
+<p>🎯 4x Scope: 84</p>
+<p>💀 AWM Scope: 59</p>
+<p>👀 Free Look: 81</p>
+</div>
+
+<!-- TECNO -->
+<div class="brand">
+<h2>📱 Tecno</h2>
+<p>🎯 Tổng quát: 98</p>
+<p>🔴 Red Dot: 95</p>
+<p>🔭 2x Scope: 88</p>
+<p>🎯 4x Scope: 82</p>
+<p>💀 AWM Scope: 57</p>
+<p>👀 Free Look: 78</p>
+</div>
+
+<!-- NOKIA -->
+<div class="brand">
+<h2>📱 Nokia</h2>
+<p>🎯 Tổng quát: 97</p>
+<p>🔴 Red Dot: 92</p>
+<p>🔭 2x Scope: 86</p>
+<p>🎯 4x Scope: 80</p>
+<p>💀 AWM Scope: 55</p>
+<p>👀 Free Look: 76</p>
+</div>
+
+<!-- SONY -->
+<div class="brand">
+<h2>📱 Sony</h2>
+<p>🎯 Tổng quát: 99</p>
+<p>🔴 Red Dot: 97</p>
+<p>🔭 2x Scope: 90</p>
+<p>🎯 4x Scope: 85</p>
+<p>💀 AWM Scope: 60</p>
+<p>👀 Free Look: 82</p>
+</div>
+
+<!-- GOOGLE PIXEL -->
+<div class="brand">
+<h2>📱 Google Pixel</h2>
+<p>🎯 Tổng quát: 99</p>
+<p>🔴 Red Dot: 97</p>
+<p>🔭 2x Scope: 91</p>
+<p>🎯 4x Scope: 86</p>
+<p>💀 AWM Scope: 62</p>
+<p>👀 Free Look: 84</p>
+</div>
+
+</div>
+
+<div class="best">
+⚡ ĐỘ NHẠY 100% HEADSHOT TỐT NHẤT ⚡
+</div>
+
+<div class="footer">
+© WolfPhuc Security
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+let pass = document.getElementById("password").value;
+
+if(pass === "Phucvn123"){
+
+document.getElementById("loginBox").style.display = "none";
+document.getElementById("content").style.display = "block";
+
+}else{
+
+alert("❌ Sai mật khẩu!");
+
+}
+
+}
+
+function searchBrand(){
+
+let input = document.getElementById("searchInput").value.toLowerCase();
+
+let brands = document.getElementsByClassName("brand");
+
+for(let i = 0; i < brands.length; i++){
+
+let text = brands[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+
+brands[i].style.display = "";
+
+}else{
+
+brands[i].style.display = "none";
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
